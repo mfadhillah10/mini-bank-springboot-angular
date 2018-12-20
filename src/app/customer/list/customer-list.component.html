@@ -1,0 +1,34 @@
+<h1>Customer</h1>
+<table border='1'>
+  <thead>
+    <th>Customer Number</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Date of Birth</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Phone Number</th>
+    <th>Phone Type</th>
+    <th colspan='2'>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor = 'let cust of listCustomer'>
+      <td><a (click)='selectCustomer(cust);'><u>{{cust.custnumber}}</u></a></td>
+      <td>{{cust.firstname}}</td>
+      <td>{{cust.lastname}}</td>
+      <td>{{cust.birthdate}}</td>
+      <td>{{cust.username}}</td>
+      <td>{{cust.password}}</td>
+      <td>{{cust.phonenumber | testPipe}}</td>
+      <td>{{cust.phonetype}}</td>
+      <td><button (click)='deleteCons(cust.custnumber)'>Delete</button></td>
+      <td><button (click)='viewAccount(cust)'>View Account</button></td>
+    </tr>
+  </tbody>
+</table><br>
+<button (click)='Tampil()'>Create New Customer</button>
+
+<div>
+    <app-customer-form *ngIf='showDetail' #formCustomer [customer]='selectedCustomer' (result)='prosesResult($event)'></app-customer-form>
+</div>
+<app-customer-combo [selectedCustomer]='selectedCustomer' (customer)='selectCustomer($event)'></app-customer-combo>

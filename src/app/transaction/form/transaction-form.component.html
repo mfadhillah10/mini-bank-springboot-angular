@@ -1,0 +1,37 @@
+<h1>Transaction</h1>
+<form [formGroup] = 'trxFormGroup'>
+  <table>
+    <tr>
+      <td>Account Number</td>
+      <td>: </td>
+      <td>
+        <select formControlName = 'accountNumber'>
+          <option>-- Choose --</option>
+          <option *ngFor='let item of account' [ngValue]='item.accountNumber'>{{item.accountNumber}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>ID</td>
+      <td>: </td>
+      <td><input type='number' formControlName = 'id'></td>
+    </tr>
+    <tr>
+      <td>Type</td>
+      <td>: </td>
+      <td><input type='text' formControlName = 'type'></td>
+    </tr>
+    <tr>
+      <td>Amount</td>
+      <td>: </td>
+      <td><input type='number' formControlName = 'amount'></td>
+    </tr>
+    <tr>
+      <td>Amount Sign</td>
+      <td>: </td>
+      <td><input type='text' formControlName = 'amountSign'></td>
+    </tr>
+  </table>
+</form>
+<button type='button' (click)='cancel()'>Cancel</button> ||
+<button type='button' [disabled]='!trxFormGroup.valid' (click)='addTransaction()'>Submit</button>

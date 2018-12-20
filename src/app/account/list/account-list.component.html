@@ -1,0 +1,27 @@
+<h1>
+  Account
+</h1>
+
+<table border='1'>
+  <thead>
+    <th>Account Number</th>
+    <th>Open Date</th>
+    <th>Balance</th>
+    <th>Customer</th>
+    <th colspan='2'>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor = 'let acc of listAccount'>
+      <td><a (click)='selectAccount(acc);'><u>{{acc.accountNumber}}</u></a></td>
+      <td>{{acc.openDate}}</td>
+      <td>{{acc.balance | currency: 'Rp. '}}</td>
+      <td>{{acc.customer.custnumber}} || {{acc.customer.firstname}}</td>
+      <td><button (click)='del(acc.accountNumber)'>Delete</button></td>
+      <td><button (click)='viewTransaction(acc)'>View Transaction</button></td>
+    </tr>
+  </tbody>
+</table><br>
+<button (click)='Tampil()'>Create New Account</button>
+<div>
+    <app-account-form *ngIf='showDetail' #formAccount [account]='selectedAccount' (result)='prosesResult($event)'></app-account-form>
+</div>

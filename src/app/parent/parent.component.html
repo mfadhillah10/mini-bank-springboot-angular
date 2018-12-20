@@ -1,0 +1,7 @@
+<input placeholder="insert name" [(ngModel)]="name" />
+
+<p>
+  <app-child *ngIf="showHide" [name]="name"></app-child><br />
+  <button pButton label="Show" (click)="show()">Show</button>
+  <button pButton label="Hide" (click)="hide()">Hide</button><br />
+</p>
