@@ -7,7 +7,7 @@
         <td>: </td>
         <td>
           <select formControlName = 'custnumber'>
-          <option>-- Choose --</option>
+          <option> -- Choose -- </option>
           <option *ngFor='let item of customer' [ngValue]='item.custnumber'>{{item.firstname}}</option>
         </select>
       </td>
@@ -15,7 +15,7 @@
       <tr>
         <td>Account Number</td>
         <td>: </td>
-        <td><input type='number' formControlName = 'accountNumber'></td>
+        <td><input type='number' formControlName = 'accountNumber' placeholder='99'></td>
       </tr>
       <tr>
         <td>Open Date</td>
@@ -25,9 +25,10 @@
       <tr>
         <td>Balance</td>
         <td>: </td>
-        <td><input type='number' formControlName = 'balance'></td>
+        <td><input type='number' formControlName = 'balance' placeholder='9000000'></td>
       </tr>
     </table>
   </form>
   <button type='button' (click)='cancel()'>Cancel</button> ||
-  <button type='button' [disabled]='!anForm.valid' (click)='addAccount()'>Submit</button>
+  <button type='button' (click)='updateAccount()'>Update</button> ||
+  <button type='button' (click)='addAccount()'>Submit</button>

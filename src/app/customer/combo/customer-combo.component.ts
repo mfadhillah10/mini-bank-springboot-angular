@@ -35,8 +35,8 @@ export class CustomerComboComponent implements OnInit {
   loadData() {
     this.customerService.getList().subscribe(
       (response) => {
-        console.log(JSON.stringify(response));
-        Object.assign(this.listCustomer, response);
+        console.log(JSON.stringify(response['values']));
+        Object.assign(this.listCustomer, response['values']);
       }, (err) => {
         alert('Error ' + JSON.stringify(err));
       }

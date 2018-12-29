@@ -15,7 +15,7 @@
       <td><a (click)='selectAccount(acc);'><u>{{acc.accountNumber}}</u></a></td>
       <td>{{acc.openDate}}</td>
       <td>{{acc.balance | currency: 'Rp. '}}</td>
-      <td>{{acc.customer.custnumber}} || {{acc.customer.firstname}}</td>
+      <td>{{acc.customer ? acc.customer.custnumber:''}} || {{acc.customer ? acc.customer.firstname:''}}</td>
       <td><button (click)='del(acc.accountNumber)'>Delete</button></td>
       <td><button (click)='viewTransaction(acc)'>View Transaction</button></td>
     </tr>

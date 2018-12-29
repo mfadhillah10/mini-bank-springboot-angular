@@ -6,12 +6,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Test2Component } from './test/test2.component';
+
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CustomerComponent } from './test/customer.component';
-import { ParentComponent } from './parent/parent.component';
-import { ChildComponent } from './child/child.component';
 import { CustomerFormComponent } from './customer/form/customer-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerListComponent } from './customer/list/customer-list.component';
@@ -26,10 +23,6 @@ import { CustomerComboComponent } from './customer/combo/customer-combo.componen
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerComponent,
-    Test2Component,
-    ParentComponent,
-    ChildComponent,
     CustomerFormComponent,
     CustomerListComponent,
     TestPipePipe,

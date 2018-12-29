@@ -53,7 +53,7 @@ export class TransactionListComponent implements OnInit, AfterViewInit {
     this.transactionService.getList(account).subscribe((response) => {
       console.log(JSON.stringify(response));
       this.listTransaction = [];
-      Object.assign(this.listTransaction, response);
+      Object.assign(this.listTransaction, response['values']);
     }, (err) => {
       alert('Error ' + JSON.stringify(err));
     });

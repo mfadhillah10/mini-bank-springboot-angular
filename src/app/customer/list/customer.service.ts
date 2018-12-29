@@ -10,23 +10,23 @@ export class CustomerService {
 constructor(private httpClient: HttpClient) { }
 
 getList() {
-  return this.httpClient.get('http://localhost:8080/cust/customers');
+  return this.httpClient.get('http://localhost:7000/api/customers');
+  // return this.httpClient.get('http://localhost:8080/cust/customers');
 }
 
 update(customer: Customer) {
-  return this.httpClient.put('http://localhost:8080/cust/update', customer);
+  // return this.httpClient.put('http://localhost:8080/cust/customer', customer);
+  return this.httpClient.put('http://localhost:7000/api/customer', customer);
 }
 
 create(customer: Customer) {
-  return this.httpClient.post('http://localhost:8080/cust/customer', customer);
+  // return this.httpClient.post('http://localhost:8080/cust/customer', customer);
+  return this.httpClient.post('http://localhost:7000/api/customer', customer);
 }
 
-delete(custnumber) {
-  return this.httpClient.delete('http://localhost:8080/cust/customer/' + custnumber).subscribe(response => {
-    location.href = 'customerlist';
-  }, (err) => {
-    alert('Error ' + JSON.stringify(err));
-  });
+del(custnumber) {
+  // return this.httpClient.delete('http://localhost:3000/customer' + custnumber);
+  return this.httpClient.delete('http://localhost:7000/api/customer/' + custnumber);
 }
 
 }

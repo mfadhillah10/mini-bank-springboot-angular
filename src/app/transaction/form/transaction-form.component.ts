@@ -38,7 +38,7 @@ export class TransactionFormComponent implements OnInit {
 
   getAcc() {
     this.transactionService.getListAcc().subscribe((response) => {
-      this.account = response;
+      this.account = response['values'];
       console.log(this.account);
     }, (err) => {
       console.log(err);
@@ -57,6 +57,27 @@ export class TransactionFormComponent implements OnInit {
       this.trxFormGroup.controls['amountSign'].setValue(this.transaction.amountSign);
       // this.trxFormGroup.controls['account'].setValue(this.transaction.account.accountNumber);
     }
+  }
+
+  updateTrx() {
+    const transaction = new Transaction();
+    transaction.id = this.trxFormGroup.controls['id'].value;
+    transaction.type = this.trxFormGroup.controls['type'].value;
+    transaction.amount = this.trxFormGroup.controls['amount'].value;
+    transaction.amountSign = this.trxFormGroup.controls['amountSign'].value;
+
+    const account = new Account();
+    account.accountNumber = this.trxFormGroup.controls['accountNumber'].value;
+    transaction.account = account;
+    console.log(transaction);
+    this.transactionService.update(transaction).subscribe(
+      (response) => {
+        console.log(JSON.stringify(response));
+        this.result.emit(true);
+      }, (err) => {
+        alert('Error ' + JSON.stringify(err));
+      }
+    );
   }
 
   addTransaction() {

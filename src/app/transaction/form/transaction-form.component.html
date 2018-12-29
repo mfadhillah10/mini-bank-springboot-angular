@@ -14,24 +14,25 @@
     <tr>
       <td>ID</td>
       <td>: </td>
-      <td><input type='number' formControlName = 'id'></td>
+      <td><input type='number' formControlName = 'id' placeholder='9'></td>
     </tr>
     <tr>
       <td>Type</td>
       <td>: </td>
-      <td><input type='text' formControlName = 'type'></td>
+      <td><input type='text' formControlName = 'type' placeholder='Debit/Credit'></td>
     </tr>
     <tr>
       <td>Amount</td>
       <td>: </td>
-      <td><input type='number' formControlName = 'amount'></td>
+      <td><input type='number' formControlName = 'amount' placeholder='9000000'></td>
     </tr>
     <tr>
       <td>Amount Sign</td>
       <td>: </td>
-      <td><input type='text' formControlName = 'amountSign'></td>
+      <td><input type='text' formControlName = 'amountSign' placeholder='IDR/USD'></td>
     </tr>
   </table>
 </form>
 <button type='button' (click)='cancel()'>Cancel</button> ||
+<button type='button' [disabled]='!trxFormGroup.valid' (click)='updateTrx()'>Update</button> ||
 <button type='button' [disabled]='!trxFormGroup.valid' (click)='addTransaction()'>Submit</button>

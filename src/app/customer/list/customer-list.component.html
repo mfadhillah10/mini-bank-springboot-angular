@@ -21,7 +21,7 @@
       <td>{{cust.password}}</td>
       <td>{{cust.phonenumber | testPipe}}</td>
       <td>{{cust.phonetype}}</td>
-      <td><button (click)='deleteCons(cust.custnumber)'>Delete</button></td>
+      <td><button (click)='del(cust.custnumber)'>Delete</button></td>
       <td><button (click)='viewAccount(cust)'>View Account</button></td>
     </tr>
   </tbody>

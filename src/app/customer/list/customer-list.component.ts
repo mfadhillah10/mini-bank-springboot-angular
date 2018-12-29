@@ -51,7 +51,7 @@ export class CustomerListComponent implements OnInit, AfterViewInit {
   loadData() {
     this.customerService.getList().subscribe((response) => {
         console.log(JSON.stringify(response));
-        Object.assign(this.listCustomer, response);
+        Object.assign(this.listCustomer, response['values']);
     }, (err) => {
       alert('Error: ' + JSON.stringify(err));
     });
@@ -72,9 +72,15 @@ export class CustomerListComponent implements OnInit, AfterViewInit {
     ]);
   }
 
-  deleteCons(custnumber) {
-    if (confirm('Are you sure you want to delete this record?')) {
-      this.customerService.delete(custnumber);
-    }
+  del(custnumber) {
+    this.customerService.del(custnumber).subscribe((response) => {
+      if (confirm('Delete this record?')) {
+        console.log(JSON.stringify(response));
+        alert(response['message']);
+        location.reload();
+      }
+    }, (err) => {
+      alert('Error ' + JSON.stringify(err));
+    });
   }
 }

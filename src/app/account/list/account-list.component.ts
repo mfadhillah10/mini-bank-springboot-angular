@@ -55,7 +55,7 @@ export class AccountListComponent implements OnInit, AfterViewInit {
     this.accountService.getList(customer).subscribe(response => {
       console.log(JSON.stringify(response));
       this.listAccount = [];
-      Object.assign(this.listAccount, response);
+      Object.assign(this.listAccount, response['values']);
     }, err => {
       alert('Error ' + JSON.stringify(err));
     });

@@ -37,7 +37,7 @@ export class AccountFormComponent implements OnInit {
 
   getCustomer() {
     this.accountService.getListCus().subscribe((response) => {
-      this.customer = response;
+      this.customer = response['values'];
       console.log(this.customer);
     }, (err) => {
       console.log(err);
@@ -56,6 +56,30 @@ export class AccountFormComponent implements OnInit {
     }
   }
 
+  updateAccount() {
+    const account = new Account();
+    account.accountNumber = this.anForm.controls['accountNumber'].value;
+    account.openDate = this.anForm.controls['openDate'].value;
+    account.balance = this.anForm.controls['balance'].value;
+
+    const customer = new Customer();
+    customer.custnumber = this.anForm.controls['custnumber'].value;
+    console.log(this.anForm.controls['custnumber'].value);
+    account.custnumber = this.anForm.controls['custnumber'].value;
+    console.log(customer);
+    account.customer = customer;
+    console.log(account);
+
+    this.accountService.update(account).subscribe(
+      (response) => {
+        console.log(JSON.stringify(response));
+        this.result.emit(true);
+      }, (err) => {
+        alert('Error ' + JSON.stringify(err));
+      }
+    );
+  }
+
   addAccount() {
     const account = new Account();
     account.accountNumber = this.anForm.controls['accountNumber'].value;
@@ -64,7 +88,11 @@ export class AccountFormComponent implements OnInit {
 
     const customer = new Customer();
     customer.custnumber = this.anForm.controls['custnumber'].value;
+    console.log(this.anForm.controls['custnumber'].value);
+    account.custnumber = this.anForm.controls['custnumber'].value;
+    console.log(customer);
     account.customer = customer;
+    console.log(account);
 
     this.accountService.create(account).subscribe(
       (response) => {
